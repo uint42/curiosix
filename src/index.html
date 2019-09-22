@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CuriosiX</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Roboto:400,700" />
+    <style>
+      #loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #2c2830;
+        z-index: 1000;
+        transition: opacity 200ms;
+      }
+
+      .loading-info {
+        position: absolute;
+        left: 50vw;
+        top: 50vh;
+        transform: translate(-50%, -100%);
+        text-align: center;
+      }
+
+      .loading-animation {
+        width: 1.5cm;
+        height: 1.5cm;
+        border: 1px #ff793f solid;
+        border-radius: 100%;
+        animation: loadingspinner 600ms infinite cubic-bezier(0.39, 1.61, 0.94, -0.15);
+        margin: 1cm auto;
+        left: 0;
+        right: 0;
+      }
+
+      #loading_description {
+        font-family: 'Roboto', system-ui, sans-serif;
+        font-size: 1.2em;
+        color: lightgrey;
+        margin-bottom: 5mm;
+        text-align: center;
+      }
+
+      .loading-progress-outline {
+        background-color: #1d1a21;
+        display: block;
+        height: 2mm;
+        width: 10cm;
+        border-radius: 2mm;
+        overflow: hidden;
+      }
+
+      #loading_progress {
+        background-color: #ff793f;
+        height: 100%;
+        width: 0%;
+        transition: width 200ms ease;
+      }
+
+      @keyframes loadingspinner {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(2);
+        }
+      }
+    </style>
+  </head>
+  <body class="light">
+    <!-- Loading animation -->
+    <div id="loading">
+      <div class="loading-info">
+        <div class="loading-animation"></div>
+        <div id="loading_description">Loading...</div>
+        <div class="loading-progress-outline">
+          <div id="loading_progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visible -->
+    <main>
+      <div class="actions">
+        <span class="auto main">
+          <img id="logo">
+          <button id="restart" class="material-icons actions-button">keyboard_return</button>
+          <button id="pause_resume" class="material-icons actions-button actions-button-disabled">pause</button>
+          <span class="execution-time-wrapper">
+            <label>Ausführungszeit</label>
+            <input id="execution_time" type="range" min="100" max="1000" >
+          </span>
+        </span>
+        <span class="max"></span>
+        <span class="auto">
+          <span class="cc-license">
+              <span class="flaticon-license">Icons made by <a href="https://www.flaticon.com/authors/photo3idea-studio" title="photo3idea_studio">photo3idea_studio</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> are licensed by <a href="https://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></span>
+              <span class="flaticon-license">Sounds made by <a href="https://notificationsounds.com/" title="Notification Sounds">www.notificationsounds.com</a> are licensed by <a href="https://creativecommons.org/licenses/by/4.0/legalcode" title="Creative Commons BY 4.0" target="_blank">CC 4.0 BY</a></span>
+          </span>
+          <button id="change_color" class="material-icons actions-button">invert_colors</button>
+          <button id="about" class="material-icons actions-button">info</button>
+        </span>
+      </div>
+
+      
+      <div id="code_mirror">
+        <div class="no-file-opened">
+          <i class="material-icons">code</i>
+          <h3>Kein Skript geöffnet</h3>
+          <p>Öffne eine Skript, um dieses zu bearbeiten oder erstelle eine neues Skript.</p>
+        </div>
+      </div>
+
+      <div id="renderer_container" class="world-not-set">
+        <div class="no-file-opened">
+          <i class="material-icons">landscape</i>
+          <h3>Keine Welt geöffnet</h3>
+          <p>Öffne eine Welt, um dieses zu bearbeiten oder erstelle eine neue Welt.</p>
+        </div>
+        <div id="entity_selector">
+          <div id="entity_color_selector_wheel"></div>
+          <div id="entity_selector_wheel"></div>
+          <img class="entity_select entity_select_current" id="entity_select_wall"></img>
+          <img class="entity_select" id="entity_select_marker"></img>
+          <img class="entity_select" id="entity_select_rover"></img>
+          <img class="entity_select" id="entity_select_brick"></img>
+          <div id="entity_selector_text"></div>
+        </div>
+        <div class="world-mode">
+          <span id="execution_mode" class="current-world-mode">Ausführen</span><span id="build_mode">Bauen</span>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

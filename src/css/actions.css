@@ -1,0 +1,82 @@
+.actions {
+  padding: 5mm;
+  background-color: var(--background-color-lighter);
+  z-index: 10;
+  grid-column: 1 / span 2;
+  display: flex;
+  width: calc(100% - 1cm);
+  position: relative;
+}
+
+.actions .auto {
+  flex: initial;
+}
+
+.actions .max {
+  flex: auto;
+}
+
+#logo {
+  height: 3em;
+}
+
+.actions * {
+  outline: none !important;
+}
+
+.actions-button {
+  font-size: 2em;
+  background-color: transparent;
+  border: none;
+  color: var(--font-color);
+  padding: 3mm;
+  cursor: pointer;
+  transition: transform 200ms, color 200ms;
+}
+
+#restart {
+  transform: rotateY(180deg);
+}
+
+#restart:not(.actions-button-disabled):hover {
+  transform: rotateY(180deg) scale(1.5);
+}
+
+.actions-button-disabled {
+  color: grey;
+  cursor: default;
+}
+
+.actions-button:not(.actions-button-disabled):hover {
+  transform: scale(1.5);
+  color: var(--accent-color);
+}
+
+#stats {
+  margin-top: 3px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.cc-license,
+.cc-license * {
+  color: grey !important;
+}
+
+.cc-license {
+  font-size: 0.6em;
+  display: inline-grid;
+  vertical-align: top;
+}
+
+.execution-time-wrapper {
+  display: inline-grid;
+  vertical-align: top;
+  text-align: center;
+  margin: 2mm !important;
+  margin-top: 3mm !important;
+}
+
+.execution-time-wrapper > input {
+  margin-top: 3mm;
+}

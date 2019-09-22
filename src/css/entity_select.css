@@ -1,0 +1,69 @@
+#entity_selector {
+  position: fixed;
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
+}
+
+#entity_selector_wheel {
+  width: 4cm;
+  height: 4cm;
+  border: 2.5cm solid var(--background-color-lighter);
+  border-radius: 100%;
+  border-top: 2.5cm solid var(--accent-color);
+  transition: transform 500ms, border-top-color 200ms;
+}
+
+#entity_color_selector_wheel {
+  top: -0.7cm;
+  left: -0.7cm;
+  position: absolute;
+  width: 9.6cm;
+  height: 9.6cm;
+  border: 4mm solid black;
+  border-radius: 100%;
+  transform: scale(0.7);
+  opacity: 0;
+  transition: transform 200ms, opacity 200ms;
+}
+
+.entity_select {
+  position: absolute;
+  left: calc(2cm + 2.5cm - 0.8cm);
+  top: calc(2cm + 2.5cm - 0.8cm);
+  margin: 0 auto;
+  width: 1.6cm;
+  max-width: 1.6cm;
+  max-height: 1.6cm;
+  filter: contrast(0) brightness(10);
+  transform: scale(1);
+  transition: transform 200ms;
+}
+
+.light .entity_select {
+  filter: contrast(0) brightness(0) !important;
+}
+
+#entity_select_wall {
+  transform: translateY(-3.2cm);
+}
+
+#entity_select_marker {
+  transform: translateX(3.2cm);
+}
+
+#entity_select_rover {
+  transform: translateY(3.2cm);
+}
+#entity_select_brick {
+  transform: translateX(-3.2cm);
+}
+
+#entity_selector_text {
+  margin-top: 1cm;
+  color: var(--font-color);
+  font-size: 1.5em;
+  letter-spacing: 1mm;
+  text-align: center;
+  text-shadow: 0px 1px 2px black;
+}

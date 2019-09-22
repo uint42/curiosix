@@ -1,0 +1,52 @@
+.CodeMirror {
+  background-color: var(--background-color-lighter) !important;
+}
+
+.CodeMirror-gutters {
+  background-color: var(--background-color) !important;
+}
+
+.CodeMirror-selected {
+  background-color: var(--accent-color-darker) !important;
+  opacity: 0.7;
+}
+
+.CodeMirror-lint-tooltip {
+  background-color: var(--background-color-lighter) !important;
+  color: var(--font-color) !important;
+  border-color: var(--background-color) !important;
+  padding-bottom: 0 !important;
+}
+
+.CodeMirror-lint-message-warning,
+.CodeMirror-lint-message-error {
+  margin-bottom: 1mm;
+}
+
+#code_mirror {
+  position: relative;
+}
+
+.current-instruction {
+  position: absolute;
+  display: inline-block;
+  color: white;
+  background-color: var(--accent-color-darker);
+  transform: translate(-3px, -3px);
+  padding: 3px;
+  border-radius: 2px;
+  animation: current-executor-fadein 200ms ease-out;
+}
+
+@keyframes current-executor-fadein {
+  from {
+    background-color: transparent;
+    transform: translate(-7px, -7px);
+    padding: 7px;
+  }
+  to {
+    background-color: var(--accent-color-darker);
+    transform: translate(-3px, -3px);
+    padding: 3px;
+  }
+}
