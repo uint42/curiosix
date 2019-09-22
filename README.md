@@ -1,4 +1,6 @@
-[![CuriosiX](https://i.imgur.com/Rs8UTY5.png)](https://curiosix.tk)
+[![CuriosiX](https://i.imgur.com/Rs8UTY5.png)](https://curiosix.netlify.com/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/70f327c0-7cea-43f7-bbf3-31d941b6829c/deploy-status)](https://app.netlify.com/sites/curiosix/deploys)
 
 CuriosiX is a web-based programmable Curiosity emulator. It was developed as an alternative to the [Robot Karol](https://www.mebis.bayern.de/infoportal/empfehlung/robot-karol/) emulator, which is mainly used in German schools.
 
