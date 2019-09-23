@@ -28,6 +28,7 @@ const IMAGES = [
   () => ((document.getElementById('entity_select_marker') as HTMLImageElement).src = require('../../../assets/images/entity_selector/marker.svg')),
   () => ((document.getElementById('entity_select_rover') as HTMLImageElement).src = require('../../../assets/images/entity_selector/rover.svg')),
   () => ((document.getElementById('entity_select_brick') as HTMLImageElement).src = require('../../../assets/images/entity_selector/brick.svg')),
+  () => ((document.getElementById('github_logo') as HTMLImageElement).src = require('../../../assets/images/other/github_logo.png')),
   () => ((document.getElementById('logo') as HTMLImageElement).src = require('../../../assets/images/logo.svg'))
 ]
 

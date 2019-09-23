@@ -69,6 +69,10 @@
   vertical-align: top;
 }
 
+#github_logo {
+  height: 1em;
+}
+
 .execution-time-wrapper {
   display: inline-grid;
   vertical-align: top;
