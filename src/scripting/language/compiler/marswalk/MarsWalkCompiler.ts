@@ -26,6 +26,7 @@ class MarsWalkCompiler extends Compiler {
   }
 
   private parseFunctions(code: string) {
+    console.log('[Parser] Parsing functions...')
     let currentLine = 0
     let currentFunctionParser: FunctionParser
 
@@ -117,6 +118,7 @@ class MarsWalkCompiler extends Compiler {
   }
 
   private buildProgramm(): FunctionDeclarationInstruction[] {
+    console.log('[Parser] Building program')
     const functions: FunctionDeclarationInstruction[] = []
     this.functionParsers.forEach(functionParser => {
       const result = functionParser.getResult()

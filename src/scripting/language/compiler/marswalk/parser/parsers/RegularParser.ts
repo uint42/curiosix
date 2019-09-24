@@ -12,14 +12,9 @@ import { EntityColor, getColorByName } from '../../../../../../entity/utils/Enti
 class RegularParser extends Parser {
   instructions: Instruction[] = []
   currentParser: SectionParser
-  lines: Line[] = []
+  functionCallLines: Line[] = []
 
   parseLine(line: Line): boolean {
-    this.reallyParseLine(line)
-    return true
-  }
-
-  reallyParseLine(line: Line): boolean {
     console.log('[Parser] Parsing line using regular parser')
     if (this.currentParser !== undefined) {
       console.log('[Parser] Parsing line using different section parser')
@@ -44,6 +39,12 @@ class RegularParser extends Parser {
       }
     }
 
+    this.functionCallLines.push(line)
+
+    return true
+  }
+
+  parseFunctionCall(line: Line): boolean {
     const functionIndex = this.compilerInstance.functionNames.indexOf(line.trimmedLine)
 
     if (functionIndex > -1) {
@@ -114,7 +115,7 @@ class RegularParser extends Parser {
   }
 
   getResult(): ParserResult {
-    // this.lines.forEach(line => this.reallyParseLine(line))
+    this.functionCallLines.forEach(line => this.parseFunctionCall(line))
     return {
       errors: this.errors,
       results: this.instructions
