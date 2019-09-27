@@ -6,8 +6,8 @@ import ScriptingManager from './scripting/ScriptingManager'
 import RendererHelper from './utils/RendererHelper'
 import Bootstrap from './utils/bootstrap/Bootstrap'
 import FileManager from './utils/files/FileManager'
-import Swal from 'sweetalert2'
 import ThemeChanger from './utils/ThemeChanger'
+import { initI18n, t } from './utils/i18n'
 
 /**
  * Main class of CuriosiX
@@ -32,6 +32,7 @@ class CuriosiX {
   }
 
   async start() {
+    await initI18n()
     ThemeChanger.setup()
     await this.bootstrap.boot()
 
