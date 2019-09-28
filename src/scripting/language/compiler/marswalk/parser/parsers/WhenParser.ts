@@ -39,6 +39,17 @@ class WhenParser extends SectionParser {
       const condition = parseCondition(splitted[1])
       this.condition = condition
     } catch (e) {
+      const spacesOnTheLeft = line.line.length - line.line.trimLeft().length
+      this.conditionFieldNameSection = {
+        start: {
+          line: line.section.start.line,
+          character: spacesOnTheLeft + splitted[0].length + 1
+        },
+        end: {
+          line: line.section.start.line,
+          character: spacesOnTheLeft + splitted[0].length + 1 + splitted[1].length
+        }
+      }
       this.errors.push({
         message: 'Unbekannte Bedingung',
         section: this.conditionFieldNameSection
