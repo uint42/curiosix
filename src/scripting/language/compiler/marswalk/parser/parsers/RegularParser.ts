@@ -10,7 +10,7 @@ import { match, matchTrimmed } from '../../../../../../utils/RegexUtils'
 import { EntityColor, getColorByName } from '../../../../../../entity/utils/EntityColor'
 
 class RegularParser extends Parser {
-  instructions: Instruction[] = []
+  instructionsMap: Map<number, Instruction> = new Map()
   currentParser: SectionParser
   functionCallLines: Line[] = []
 
@@ -21,7 +21,7 @@ class RegularParser extends Parser {
       if (!this.currentParser.parseLine(line)) {
         const result = this.currentParser.getResult()
         this.errors = this.errors.concat(result.errors)
-        this.instructions.push(result.results as Instruction)
+        this.instructionsMap.set(line.section.start.line, result.results as Instruction)
         this.currentParser = undefined
       }
       return true
@@ -49,7 +49,7 @@ class RegularParser extends Parser {
 
     if (functionIndex > -1) {
       console.log('[Parser] Line calls another user defined function')
-      this.instructions.push(new FunctionInvocationInstruction(line.trimmedSection, this.compilerInstance.functionNames[functionIndex]))
+      this.instructionsMap.set(line.section.start.line, new FunctionInvocationInstruction(line.trimmedSection, this.compilerInstance.functionNames[functionIndex]))
       return true
     }
 
@@ -82,7 +82,7 @@ class RegularParser extends Parser {
             message: result.errorMessage
           })
         } else {
-          this.instructions.push(new NativeInvocationInstruction(line.trimmedSection, result.name, result.arguments))
+          this.instructionsMap.set(line.section.start.line, new NativeInvocationInstruction(line.trimmedSection, result.name, result.arguments))
         }
       } else {
         if (NATIVE_METHODS_NO_ARG[commandName] !== undefined) {
@@ -101,7 +101,7 @@ class RegularParser extends Parser {
       console.log('[Parser] Function call has no arguments')
       const nativeMethod = NATIVE_METHODS_NO_ARG[line.trimmedLine]
       if (nativeMethod !== undefined) {
-        this.instructions.push(new NativeInvocationInstruction(line.trimmedSection, nativeMethod.name, nativeMethod.arguments))
+        this.instructionsMap.set(line.section.start.line, new NativeInvocationInstruction(line.trimmedSection, nativeMethod.name, nativeMethod.arguments))
       } else {
         console.log('[Parser] Unknown function')
         this.errors.push({
@@ -116,9 +116,12 @@ class RegularParser extends Parser {
 
   getResult(): ParserResult {
     this.functionCallLines.forEach(line => this.parseFunctionCall(line))
+
+    const instructions = [...this.instructionsMap.entries()].sort().map(entry => entry[1])
+
     return {
       errors: this.errors,
-      results: this.instructions
+      results: instructions
     }
   }
 }
