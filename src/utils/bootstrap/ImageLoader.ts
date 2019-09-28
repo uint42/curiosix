@@ -1,4 +1,5 @@
 import Bootstrap from './Bootstrap'
+import { t } from '../i18n'
 
 class ImageLoader {
   private bootstrap: Bootstrap
@@ -8,7 +9,7 @@ class ImageLoader {
   }
 
   loadImages() {
-    this.bootstrap.updateDescription('Loading images...')
+    this.bootstrap.updateDescription(t('bootstrap.load_images'))
     for (let i = 0; i < IMAGES.length; i++) {
       const image = IMAGES[i]
       image()

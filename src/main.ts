@@ -36,10 +36,10 @@ class CuriosiX {
     ThemeChanger.setup()
     await this.bootstrap.boot()
 
-    this.bootstrap.updateDescription('Initializing renderer...')
+    this.bootstrap.updateDescription(t('bootstrap.init_renderer'))
     this.rendererHelper.setup()
 
-    this.bootstrap.updateDescription('Connecting to IndedexDB...')
+    this.bootstrap.updateDescription(t('bootstrap.connect_indexdb'))
     await this.fileManager.start()
 
     this.addAmbientLight()

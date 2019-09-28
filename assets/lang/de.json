@@ -1,1 +1,15 @@
-{}
+{
+  "bootstrap": {
+    "load_images": "Bilder werden geladen...",
+    "load_model": {
+      "loading": "{{name}} 3D-Modell wird geladen...",
+      "loading_error": {
+        "title": "Fehler beim laden eines 3D-Modells",
+        "text": "Beim Laden eines 3d-Modells ist ein Fehler aufgetreten. Versuche die Seite neu zu laden und den Cache-Speicher zu leeren. Sollte dies nichts bringen, erstelle bitte einen Issue auf GitHub.",
+        "reload_page": "Seite neu laden"
+      }
+    },
+    "connect_indexdb": "Verbindung zur IndexedDB wird hergestellt",
+    "init_renderer": "Renderer wird initialisiert..."
+  }
+}
