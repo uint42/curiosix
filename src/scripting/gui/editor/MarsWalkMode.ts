@@ -13,7 +13,7 @@ export function defineMarsWalkMode() {
       //"solange"/while instruction with condition
       { regex: /(solange )([a-z$][\w$]*)( tue)?/i, token: ['keyword', 'property', 'keyword'], indent: true },
       //"wenn"/if instruction with condition
-      { regex: /(wenn )([a-z$][\w$]*)( (dann|sonst))?/i, token: ['keyword', 'property', 'keyword'], indent: true },
+      { regex: /(wenn )([a-z$][\w$]*)/i, token: ['keyword', 'property', 'keyword'], indent: true },
       //"wenn/sonst" / if/else keyword
       { regex: /dann|sonst/i, token: 'keyword' },
 
