@@ -1,5 +1,6 @@
 import FileTypeManager, { IFile } from './FileTypeManager'
 import Swal from 'sweetalert2'
+import { t } from '../i18n'
 
 abstract class FileSelector {
   fileTypeManager: FileTypeManager
@@ -97,8 +98,8 @@ abstract class FileSelector {
           ;(element.querySelector('.rename') as HTMLElement).onclick = async _ => {
             Swal.getCloseButton().click()
             const result = await Swal.fire({
-              title: 'Datei umbenennen',
-              text: 'Wähle einen neuen Namen für die Datei',
+              title: t('file_management.rename.title'),
+              text: t('file_management.rename.text'),
               input: 'text',
               inputValue: fileName,
               type: 'question'
@@ -107,8 +108,8 @@ abstract class FileSelector {
             const newFileName: string = result.value.trim()
             if (await this.fileTypeManager.exists(newFileName)) {
               Swal.fire({
-                title: 'Datei mit neuem Namen existiert bereits',
-                text: 'Bitte wähle einen anderen neuen Dateinamen',
+                title: t('file_management.already_exists.title'),
+                text: t('file_management.already_exists.text'),
                 type: 'error'
               })
               return
@@ -121,8 +122,8 @@ abstract class FileSelector {
           ;(element.querySelector('.delete') as HTMLElement).onclick = async _ => {
             Swal.getCloseButton().click()
             const response = await Swal.fire({
-              title: 'Bist du dir sicher?',
-              text: `Bist du dir sicher, dass du die Datei ${fileName} unwiederruflich löschen willst?`,
+              title: t('file_management.delete.title'),
+              text: t('file_management.delete.text'),
               type: 'question',
               showCancelButton: true,
               showConfirmButton: true

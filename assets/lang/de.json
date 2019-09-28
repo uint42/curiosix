@@ -11,5 +11,19 @@
     },
     "connect_indexdb": "Verbindung zur IndexedDB wird hergestellt",
     "init_renderer": "Renderer wird initialisiert..."
+  },
+  "file_management": {
+    "rename": {
+      "title": "Datei umbenennen?",
+      "text": "Bitte wähle einen neuen Namen für die Datei"
+    },
+    "already_exists": {
+      "title": "Datei existiert bereits",
+      "text": "Bitte wähle einen anderen Dateinamen"
+    },
+    "delete": {
+      "title": "Bist du dir sicher?",
+      "text": "Bist du dir sicher, dass du die Datei {{name}} unwiederruflich löschen möchtest?"
+    }
   }
 }
