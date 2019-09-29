@@ -13,8 +13,9 @@
     "init_renderer": "Renderer wird initialisiert..."
   },
   "file_management": {
+    "filename": "Dateiname",
     "rename": {
-      "title": "Datei umbenennen?",
+      "title": "Datei umbenennen",
       "text": "Bitte wähle einen neuen Namen für die Datei"
     },
     "already_exists": {
@@ -23,7 +24,36 @@
     },
     "delete": {
       "title": "Bist du dir sicher?",
-      "text": "Bist du dir sicher, dass du die Datei {{name}} unwiederruflich löschen möchtest?"
+      "text": "Bist du dir sicher, dass du die Datei {{name}} unwiderruflich löschen möchtest?"
+    },
+    "empty_name": {
+      "title": "Dateiname ist leer",
+      "text": "Bitte wähle einen Dateinamen"
+    },
+    "script": {
+      "title": "Skript-Explorer",
+      "create_new": {
+        "title": "Erstelle ein neues Skript"
+      }
+    },
+    "world": {
+      "title": "Welt-Explorer",
+      "create_new": {
+        "title": "Erstelle eine neue Welt",
+        "input": {
+          "width": "Breite",
+          "length": "Länge",
+          "height": "Höhe"
+        }
+      },
+      "invalid_input": {
+        "title": "Ungültige Eingabe",
+        "text": "Die Breite, Länge oder Höhe ist ungültig"
+      },
+      "loading_error": {
+        "title": "Fehler beim Laden einer Welt",
+        "text": "Beim Laden der Welt ist ein Fehler aufgetreten. "
+      }
     }
   }
 }

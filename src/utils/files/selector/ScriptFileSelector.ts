@@ -1,12 +1,13 @@
 import FileSelector from '../FileSelector'
 import Swal from 'sweetalert2'
 import curiosix from '../../../main'
+import { t } from '../../i18n'
 
 class ScriptFileSelector extends FileSelector {
   noFileOpened: HTMLElement
 
   setup() {
-    const element = this.create('Skript - Explorer')
+    const element = this.create()
     element.style.gridColumn = '1/2'
     document.querySelector('main').appendChild(element)
     this.noFileOpened = document.querySelector('#code_mirror > .no-file-opened')
@@ -14,25 +15,25 @@ class ScriptFileSelector extends FileSelector {
 
   async newFileDialog() {
     const content = await Swal.fire({
-      title: 'Erstelle ein neues Skript',
+      title: t('file_management.script.create_new.title'),
       input: 'text',
-      inputPlaceholder: 'Dateiname',
-      confirmButtonText: 'Erstelle eine neues Skript'
+      inputPlaceholder: t('file_management.filename'),
+      confirmButtonText: t('file_management.script.create_new.title')
     })
     if (content.dismiss) return
     const fileName: string = content.value.trim()
     if (fileName.length === 0) {
       Swal.fire({
-        title: 'Dateiname ist leer',
-        text: 'Bitte wähle einen anderen Dateinamen',
+        title: t('file_management.empty_name.title'),
+        text: t('file_management.empty_name.text'),
         type: 'error'
       })
       return
     }
     if (await this.fileTypeManager.exists(fileName)) {
       Swal.fire({
-        title: 'Datei existiert bereits',
-        text: 'Bitte wähle einen anderen Dateinamen',
+        title: t('file_management.already_exists.title'),
+        text: t('file_management.already_exists.text'),
         type: 'error'
       })
       return

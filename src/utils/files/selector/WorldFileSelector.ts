@@ -3,12 +3,13 @@ import Swal from 'sweetalert2'
 import curiosix from '../../../main'
 import World from '../../../world/World'
 import { Vector3 } from '../../Vector'
+import { t } from '../../i18n'
 
 class WorldFileSelector extends FileSelector {
   private noFileOpened: HTMLElement
 
   setup() {
-    const element = this.create('Welt - Explorer')
+    const element = this.create()
     element.style.gridColumn = '2/2'
 
     document.querySelector('main').appendChild(element)
@@ -18,13 +19,13 @@ class WorldFileSelector extends FileSelector {
 
   async newFileDialog() {
     const result = await Swal.fire({
-      title: 'Erstelle eine neue Welt',
-      html: `<input id="world-filename" class="swal2-input" placeholder="Dateiname">
-      <input id="world-width" class="swal2-input" placeholder="Breite" type="number" min="1" max="26" value="10" style="max-width: 100%;">
-      <input id="world-length" class="swal2-input" placeholder="Länge" type="number" min="1" max="26" value="10" style="max-width: 100%;">
-      <input id="world-height" class="swal2-input" placeholder="Höhe"  type="number" min="1" max="26" value="6"  style="max-width: 100%;">`,
-      inputPlaceholder: 'Dateiname',
-      confirmButtonText: 'Erstelle eine neue Welt',
+      title: t('file_management.world.create_new.title'),
+      html: `<input id="world-filename" class="swal2-input" placeholder="${t('file_management.filename')}">
+      <input id="world-width" class="swal2-input" placeholder="${t('file_management.world.create_new.input.width')}" type="number" min="1" max="26" value="10" style="max-width: 100%;">
+      <input id="world-length" class="swal2-input" placeholder="${t('file_management.world.create_new.input.length')}" type="number" min="1" max="26" value="10" style="max-width: 100%;">
+      <input id="world-height" class="swal2-input" placeholder="${t('file_management.world.create_new.input.height')}"  type="number" min="1" max="26" value="6"  style="max-width: 100%;">`,
+      inputPlaceholder: t('file_management.filename'),
+      confirmButtonText: t('file_management.world.create_new.title'),
       onOpen: _ => {
         document.getElementById('world-filename').focus()
       },
@@ -43,27 +44,27 @@ class WorldFileSelector extends FileSelector {
     const fileName: string = result.value.fileName.trim()
     if (fileName.length === 0) {
       Swal.fire({
-        title: 'Dateiname ist leer',
-        text: 'Bitte wähle einen anderen Dateinamen',
+        title: t('file_management.empty_name.title'),
+        text: t('file_management.empty_name.text'),
         type: 'error'
       })
       return
     }
     if (await this.fileTypeManager.exists(fileName)) {
       Swal.fire({
-        title: 'Datei existiert bereits',
-        text: 'Bitte wähle einen anderen Dateinamen',
+        title: t('file_management.already_exists.title'),
+        text: t('file_management.already_exists.text'),
         type: 'error'
       })
       return
     }
-    const width = +result.value.width
-    const length = +result.value.length
-    const height = +result.value.height
-    if (width === 0 || length === 0 || height === 0) {
+    const width = Math.floor(+result.value.width)
+    const length = Math.floor(+result.value.length)
+    const height = Math.floor(+result.value.height)
+    if (width <= 0 || length <= 0 || height <= 0) {
       Swal.fire({
-        title: 'Ungültige Eingabe',
-        text: 'Die Breite, Länge oder Höhe ist ungültig',
+        title: t('file_management.world.invalid_input.title'),
+        text: t('file_management.world.invalid_input.text'),
         type: 'error'
       })
       return
@@ -83,8 +84,8 @@ class WorldFileSelector extends FileSelector {
       console.log('[File] World loaded')
     } catch (e) {
       Swal.fire({
-        title: 'Fehler beim Laden einer Welt',
-        text: 'Beim Laden der Welt ist ein Fehler aufgetreten. Dies tut uns leid.',
+        title: t('file_management.world.loading_error.title'),
+        text: t('file_management.world.loading_error.title'),
         type: 'error'
       })
       return

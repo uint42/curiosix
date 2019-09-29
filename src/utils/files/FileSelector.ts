@@ -16,7 +16,7 @@ abstract class FileSelector {
     this.fileTypeManager = fileTypeManager
   }
 
-  protected create(fileViewerText: string): HTMLElement {
+  protected create(): HTMLElement {
     this.wrapperElement = document.createElement('div')
     this.wrapperElement.classList.add('file-selector')
 
@@ -25,7 +25,7 @@ abstract class FileSelector {
     this.wrapperElement.appendChild(actionsDiv)
 
     this.viewFilesElement = this.newIcon('format_list_bulleted')
-    this.viewFilesElement.onclick = _ => this.openFileViewer(fileViewerText)
+    this.viewFilesElement.onclick = _ => this.openFileViewer(t(`file_management.${this.fileTypeManager.type}.title`))
     actionsDiv.appendChild(this.viewFilesElement)
 
     this.createNewFileElement = this.newIcon('add_box')
