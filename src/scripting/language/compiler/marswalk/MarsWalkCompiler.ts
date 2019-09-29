@@ -31,11 +31,14 @@ class MarsWalkCompiler extends Compiler {
     let currentFunctionParser: FunctionParser
 
     code.split('\n').forEach(rawLine => {
+      currentLine++
+      console.group(`Line #${currentLine}`)
       console.log('[Parser] Parsing new line')
 
-      currentLine++
-
-      if (rawLine.trim() === '') return
+      if (rawLine.trim() === '') {
+        console.groupEnd()
+        return
+      }
 
       const line: Line = {
         line: rawLine,
@@ -69,6 +72,7 @@ class MarsWalkCompiler extends Compiler {
           })
         }
       }
+      console.groupEnd()
     })
   }
 
