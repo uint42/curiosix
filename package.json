@@ -1,6 +1,6 @@
 {
   "name": "curiosix",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "CuriosiX is a web-based programmable Curiosity emulator",
   "scripts": {
     "dev": "webpack-dev-server --host 0.0.0.0 --open --config webpack.dev.js",
