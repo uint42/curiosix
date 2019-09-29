@@ -12,6 +12,7 @@ import { EntityColor, getColorByName } from '../../../../../../entity/utils/Enti
 class RegularParser extends Parser {
   instructionsMap: Map<number, Instruction> = new Map()
   currentParser: SectionParser
+  parsersMap: Map<number, SectionParser> = new Map()
   functionCallLines: Line[] = []
 
   parseLine(line: Line): boolean {
@@ -19,9 +20,7 @@ class RegularParser extends Parser {
     if (this.currentParser !== undefined) {
       console.log('[Parser] Parsing line using different section parser')
       if (!this.currentParser.parseLine(line)) {
-        const result = this.currentParser.getResult()
-        this.errors = this.errors.concat(result.errors)
-        this.instructionsMap.set(line.section.start.line, result.results as Instruction)
+        this.parsersMap.set(line.section.start.line, this.currentParser)
         this.currentParser = undefined
       }
       return true
@@ -45,6 +44,7 @@ class RegularParser extends Parser {
   }
 
   parseFunctionCall(line: Line): boolean {
+    console.log(this.compilerInstance.functionNames)
     const functionIndex = this.compilerInstance.functionNames.indexOf(line.trimmedLine)
 
     if (functionIndex > -1) {
@@ -116,6 +116,11 @@ class RegularParser extends Parser {
 
   getResult(): ParserResult {
     this.functionCallLines.forEach(line => this.parseFunctionCall(line))
+    this.parsersMap.forEach((value, key) => {
+      const result = value.getResult()
+      this.errors = this.errors.concat(result.errors)
+      this.instructionsMap.set(key, result.results as Instruction)
+    })
 
     const instructions = [...this.instructionsMap.entries()].sort().map(entry => entry[1])
 
