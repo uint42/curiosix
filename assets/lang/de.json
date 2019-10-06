@@ -60,17 +60,32 @@
       },
       "no_file_opened": {
         "title": "Keine Welt geöffnet",
-        "text": "Öffne eine Welt, um dieses zu bearbeiten oder erstelle eine neue Welt."
+        "text": "Öffne eine Welt, um diese zu bearbeiten oder erstelle eine neue Welt."
       }
     }
   },
   "scripting": {
-    "execution_time": "Ausführungszeit"
+    "execution_time": "Ausführungszeit",
+    "execution_not_possible": {
+      "title": "Skript kann nicht ausgeführt werden",
+      "text": "Damit ein Skript ausgeführt werden kann, muss es geöffnet sein. Außerdem muss eine Welt mit einem Rover ausgewählt sein."
+    }
   },
   "world": {
     "mode": {
       "execution": "Ausführen",
       "build": "Bauen"
     }
+  },
+  "about": {
+    "title": "Über CuriosiX",
+    "version": "Version",
+    "version_type": {
+      "development": "Entwicklerversion",
+      "produktion": "Nutzerversion"
+    },
+    "build_info": "Build-Informationen",
+    "build_date": "Build-Datum",
+    "open_source_licences": "Open-Source-Lizenzen"
   }
 }
