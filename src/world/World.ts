@@ -162,6 +162,7 @@ class World {
       Swal.fire({
         position: 'bottom-right',
         backdrop: false,
+        allowOutsideClick: false,
         text: 'Maximale Bauhöhe erreicht',
         showConfirmButton: false,
         width: 'max-content',
