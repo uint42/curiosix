@@ -75,6 +75,13 @@
     "mode": {
       "execution": "Ausführen",
       "build": "Bauen"
+    },
+    "maximal_build_height_reached": "Maximale Bauhöhe erreicht",
+    "entities": {
+      "WALL": "Wand",
+      "MARKER": "Markierung",
+      "BRICK": "Ziegel",
+      "ROVER": "Rover"
     }
   },
   "about": {

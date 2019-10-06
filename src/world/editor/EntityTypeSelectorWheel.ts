@@ -3,6 +3,7 @@ import BuildEditor from './BuildEditor'
 import { getColorCode, EntityColor } from '../../entity/utils/EntityColor'
 import EntityType from '../../entity/EntityType'
 import curiosix from '../../main'
+import { t } from '../../utils/i18n'
 
 class EntityTypeSelectorWheel {
   static MIN_OFFSET = 40
@@ -28,7 +29,6 @@ class EntityTypeSelectorWheel {
 
   private wheelEvent = event => {
     if (!this.buildEditor.enabled) return
-    console.log(this.lastSelectionChangeMousePosition.distanceTo(new Vector2(event.x, event.y)))
     if (this.lastSelectionChangeMousePosition.distanceTo(new Vector2(event.x, event.y)) > EntityTypeSelectorWheel.MAX_DISTANCE && Date.now() - this.lastSelectionChangeTime > 400) {
       this.makeInvisible()
     }
@@ -38,7 +38,7 @@ class EntityTypeSelectorWheel {
     this.buildEditor = buildEditor
 
     this.entitySelectorText = document.getElementById('entity_selector_text') as HTMLDivElement
-    this.entitySelectorText.innerText = this.buildEditor.currentSelectedEntityType
+    this.setEntityTypeName()
 
     this.entitySelector = document.getElementById('entity_selector') as HTMLDivElement
 
@@ -96,7 +96,7 @@ class EntityTypeSelectorWheel {
 
   show(event: MouseEvent) {
     event.preventDefault()
-    this.entitySelectorText.innerText = this.buildEditor.currentSelectedEntityType
+    this.setEntityTypeName()
 
     if (BuildEditor.ENTITY_TYPES_WITH_COLORS.indexOf(this.buildEditor.currentSelectedEntityType) > -1) {
       this.makeEntityColorSelectorVisible()
@@ -170,6 +170,10 @@ class EntityTypeSelectorWheel {
   private makeEntityColorSelectorInvisible() {
     this.entityColorSelectorWheel.style.opacity = '0'
     this.entityColorSelectorWheel.style.transform = 'scale(0.7)'
+  }
+
+  private setEntityTypeName() {
+    this.entitySelectorText.innerText = t(`world.entities.${this.buildEditor.currentSelectedEntityType}`).toUpperCase()
   }
 }
 

@@ -11,6 +11,7 @@ import BuildEditor from './editor/BuildEditor'
 import EntityBrick from '../entity/impl/EntityBrick'
 import SpawnAnimation from '../entity/utils/SpawnAnimation'
 import Swal from 'sweetalert2'
+import { t } from '../utils/i18n'
 
 class World {
   size: Vector3
@@ -163,7 +164,7 @@ class World {
         position: 'bottom-right',
         backdrop: false,
         allowOutsideClick: false,
-        text: 'Maximale Bauhöhe erreicht',
+        text: t('world.maximal_build_height_reached'),
         showConfirmButton: false,
         width: 'max-content',
         timer: 2500
