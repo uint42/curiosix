@@ -9,6 +9,17 @@ export async function initI18n() {
       de: { translation: require('../../assets/lang/de.json') }
     }
   })
+  translateDOM()
+}
+
+function translateDOM() {
+  document.querySelectorAll('*[i18n]').forEach((element: HTMLElement) => {
+    if (element.children.length > 0) {
+      console.warn('Element with i18n attribute has children')
+      return
+    }
+    element.innerText = t(element.innerText.toLowerCase())
+  })
 }
 
 export function t(key: string | string[], options?: any) {

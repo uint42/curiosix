@@ -34,6 +34,10 @@
       "title": "Skript-Explorer",
       "create_new": {
         "title": "Erstelle ein neues Skript"
+      },
+      "no_file_opened": {
+        "title": "Kein Skript geöffnet",
+        "text": "Öffne ein Skript, um dieses zu bearbeiten oder erstelle ein neues Skript."
       }
     },
     "world": {
@@ -53,7 +57,20 @@
       "loading_error": {
         "title": "Fehler beim Laden einer Welt",
         "text": "Beim Laden der Welt ist ein Fehler aufgetreten. "
+      },
+      "no_file_opened": {
+        "title": "Keine Welt geöffnet",
+        "text": "Öffne eine Welt, um dieses zu bearbeiten oder erstelle eine neue Welt."
       }
+    }
+  },
+  "scripting": {
+    "execution_time": "Ausführungszeit"
+  },
+  "world": {
+    "mode": {
+      "execution": "Ausführen",
+      "build": "Bauen"
     }
   }
 }

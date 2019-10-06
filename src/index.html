@@ -92,7 +92,7 @@
           <button id="restart" class="material-icons actions-button">keyboard_return</button>
           <button id="pause_resume" class="material-icons actions-button actions-button-disabled">pause</button>
           <span class="execution-time-wrapper">
-            <label>Ausführungszeit</label>
+            <label i18n>scripting.execution_time</label>
             <input id="execution_time" type="range" min="100" max="1000" >
           </span>
         </span>
@@ -111,16 +111,16 @@
       <div id="code_mirror">
         <div class="no-file-opened">
           <i class="material-icons">code</i>
-          <h3>Kein Skript geöffnet</h3>
-          <p>Öffne eine Skript, um dieses zu bearbeiten oder erstelle eine neues Skript.</p>
+          <h3 i18n>file_management.script.no_file_opened.title</h3>
+          <p i18n>file_management.script.no_file_opened.text</p>
         </div>
       </div>
 
       <div id="renderer_container" class="world-not-set">
         <div class="no-file-opened">
           <i class="material-icons">landscape</i>
-          <h3>Keine Welt geöffnet</h3>
-          <p>Öffne eine Welt, um dieses zu bearbeiten oder erstelle eine neue Welt.</p>
+          <h3 i18n>file_management.world.no_file_opened.title</h3>
+          <p i18n>file_management.world.no_file_opened.text</p>
         </div>
         <div id="entity_selector">
           <div id="entity_color_selector_wheel"></div>
@@ -132,7 +132,7 @@
           <div id="entity_selector_text"></div>
         </div>
         <div class="world-mode">
-          <span id="execution_mode" class="current-world-mode">Ausführen</span><span id="build_mode">Bauen</span>
+          <span id="execution_mode" class="current-world-mode" i18n>world.mode.execution</span><span id="build_mode" i18n>world.mode.build</span>
         </div>
       </div>
     </main>
