@@ -10,7 +10,11 @@
       }
     },
     "connect_indexdb": "Verbindung zur IndexedDB wird hergestellt",
-    "init_renderer": "Renderer wird initialisiert..."
+    "init_renderer": "Renderer wird initialisiert...",
+    "mobile_not_supported": {
+      "title": "Mobilgeräte werden nicht unterstützt",
+      "text": "Wenn du CuriosiX trotzdem nutzen möchtest, klicke auf „OK“"
+    }
   },
   "file_management": {
     "filename": "Dateiname",

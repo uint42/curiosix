@@ -3,6 +3,7 @@ import { WebGLRenderer, PerspectiveCamera } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import * as Stats from 'stats.js'
 import Swal from 'sweetalert2'
+import { t } from './i18n'
 
 class RendererHelper {
   renderer: WebGLRenderer
@@ -34,8 +35,8 @@ class RendererHelper {
 
     if ('ontouchstart' in window) {
       Swal.fire({
-        title: 'CuriosiX ist nicht für Mobilgeräte optimiert',
-        text: 'Wenn CuriosiX trotzdem nutzen möchtest, klicke auf "OK"'
+        title: t('bootstrap.mobile_not_supported.title'),
+        text: t('bootstrap.mobile_not_supported.text')
       })
     }
 
